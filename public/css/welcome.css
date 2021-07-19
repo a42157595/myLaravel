@@ -83,15 +83,32 @@ body {
     height: calc(100% - 70px);
 }
 
-#addNote {
+.addNote {
     width: 500px;
     height: 150px;
     box-shadow: 0px 0px 10px rgb(121, 121, 121) !important;
-    position: relative;
-    left: 20%;
+    position: absolute;
+    left: 35%;
     margin: 50px 0;
 }
 
+#addNote {
+    height: 100%;
+}
+
+
+#addNoteBtn {
+    height: 45px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 5px;
+}
+
+#addNoteBtn:hover {
+    background-color: rgb(238, 234, 234);
+}
 
 .optionalArea {
     width: 20%;
@@ -102,7 +119,7 @@ body {
 .option {
     cursor: pointer;
     position: relative;
-    width: calc(100% - 60px);
+    width: 250px;
     height: 50px;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
