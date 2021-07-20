@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\addNoteRequest;
 use Illuminate\Http\Request;
 use App\Models\Notes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class NoteController extends Controller
 {
+    public function __construct()
+    {
+        if (Auth::check()) {
+            echo json_encode(array('status' => false, 'msg' => '尚未登入!!'));
+        }
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,11 +42,14 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(addNoteRequest $request)
     {
-        if (Auth::check()) {
-            echo "a";
+        $validator = $request->getValidatorInstance();
+        if ($validator->fails()) {
+            echo $errorMessage = $validator->getMessageBag()->getMessages();
         }
+
+        // echo $request->post('content');
     }
 
     /**

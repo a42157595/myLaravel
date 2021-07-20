@@ -1,6 +1,10 @@
+let editor;
 $(document).ready(function () {
     InlineEditor
         .create(document.querySelector('#addNote'))
+        .then(newEditor => {
+            editor = newEditor;
+        })
         .catch(error => {
             console.error(error);
         });
@@ -32,9 +36,27 @@ $(document).ready(function () {
         $.ajax({
             type: "post",
             url: "notes/store",
+            data: {
+                content: editor.getData()
+            },
             dataType: "json",
-            success: function (response) {
-
+            success: function (r) {
+                if (r['status'])
+                    console.log("a");
+                else
+                    swal({
+                        title: r['msg'],
+                        timer: 2000,
+                        showConfirmButton: false
+                    });
+            },
+            error: function (r) {
+                console.log(r);
+                swal({
+                    title: r.responseJSON['message'],
+                    timer: 2000,
+                    showConfirmButton: false
+                });
             }
         });
     });
