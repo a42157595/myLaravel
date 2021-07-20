@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Notes extends Model
 {
     use HasFactory;
-    protected $filed = ['content'];
-    protected $table = 'noetes';
+    protected $filed = ['user_id', 'content'];
+    // protected $table = 'notes';
 }

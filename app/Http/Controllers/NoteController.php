@@ -54,10 +54,11 @@ class NoteController extends Controller
         $note = new Notes;
         $note->content = $request['content'];
         $note->user_id = Auth::id();
-        if ($note->save())
-            echo json_encode(array('status' => true, 'msg' => '新增成功'));
-        else
-            echo json_encode(array('status' => false, 'msg' => '新增失敗'));
+        $note->save();
+        // if ($note->save())
+        //     echo json_encode(array('status' => true, 'msg' => '新增成功'));
+        // else
+        //     echo json_encode(array('status' => false, 'msg' => '新增失敗'));
     }
 
     /**
