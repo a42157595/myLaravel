@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class NoteController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +18,6 @@ class NoteController extends Controller
     {
         //
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +36,11 @@ class NoteController extends Controller
      */
     public function store(Request $request)
     {
-        echo json_encode(array('status' => Auth::check()));
+        if (!Auth::check()) {
+            echo json_encode(array('status' => false, 'msg' => '尚未登入!!'));
+            return;
+        }
+
         $validator = Validator::make($request->all(), [
             'content' => 'required',
         ], [
@@ -51,14 +50,14 @@ class NoteController extends Controller
             echo json_encode(array('status' => false, 'msg' => $validator->errors()->all()));
             return;
         }
+
         $note = new Notes;
         $note->content = $request['content'];
         $note->user_id = Auth::id();
-        $note->save();
-        // if ($note->save())
-        //     echo json_encode(array('status' => true, 'msg' => '新增成功'));
-        // else
-        //     echo json_encode(array('status' => false, 'msg' => '新增失敗'));
+        if ($note->save())
+            echo json_encode(array('status' => true, 'msg' => '新增成功'));
+        else
+            echo json_encode(array('status' => false, 'msg' => '新增失敗'));
     }
 
     /**

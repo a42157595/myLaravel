@@ -41,14 +41,15 @@ $(document).ready(function () {
             },
             dataType: "json",
             success: function (r) {
-                if (r['status'])
+                if (r['status']) {
                     console.log("a");
-                else
-                    swal({
-                        title: r['msg'],
-                        timer: 2000,
-                        showConfirmButton: false
-                    });
+                }
+
+                swal({
+                    title: r['msg'],
+                    timer: 2000,
+                    showConfirmButton: false
+                });
             }
         });
     });

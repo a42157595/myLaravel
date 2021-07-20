@@ -140,3 +140,46 @@ body {
 .optionIcon span {
     margin-left: 20px;
 }
+
+.note {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 250px;
+    /* border: 0px solid white; */
+}
+
+.note .card {
+    position: relative;
+    width: 240px;
+    min-height: 70px;
+}
+
+.cardContent {
+    display: block;
+    padding: 10px 10px 40px;
+    width: 210px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.pushpin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+
+.pushpinIcon {
+    position: absolute;
+    left: 2px;
+    top: 6px;
+}
+
+.pushpin:hover {
+    background-color: rgb(238, 234, 234);
+}
