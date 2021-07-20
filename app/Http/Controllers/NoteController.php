@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\addNoteRequest;
 use Illuminate\Http\Request;
 use App\Models\Notes;
 use Illuminate\Support\Facades\Auth;
@@ -12,9 +11,7 @@ class NoteController extends Controller
 {
     public function __construct()
     {
-        if (Auth::check()) {
-            echo json_encode(array('status' => false, 'msg' => '尚未登入!!'));
-        }
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -42,14 +39,25 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(addNoteRequest $request)
+    public function store(Request $request)
     {
-        $validator = $request->getValidatorInstance();
-        if ($validator->fails()) {
-            echo $errorMessage = $validator->getMessageBag()->getMessages();
+        echo json_encode(array('status' => Auth::check()));
+        $validator = Validator::make($request->all(), [
+            'content' => 'required',
+        ], [
+            'content.required' => '內容不可為空',
+        ]);
+        if ($validator->errors()->any()) {
+            echo json_encode(array('status' => false, 'msg' => $validator->errors()->all()));
+            return;
         }
-
-        // echo $request->post('content');
+        $note = new Notes;
+        $note->content = $request['content'];
+        $note->user_id = Auth::id();
+        if ($note->save())
+            echo json_encode(array('status' => true, 'msg' => '新增成功'));
+        else
+            echo json_encode(array('status' => false, 'msg' => '新增失敗'));
     }
 
     /**

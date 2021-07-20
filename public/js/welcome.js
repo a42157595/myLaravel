@@ -49,14 +49,6 @@ $(document).ready(function () {
                         timer: 2000,
                         showConfirmButton: false
                     });
-            },
-            error: function (r) {
-                console.log(r);
-                swal({
-                    title: r.responseJSON['message'],
-                    timer: 2000,
-                    showConfirmButton: false
-                });
             }
         });
     });
