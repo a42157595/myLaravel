@@ -157,7 +157,7 @@ body {
 
 .cardContent {
     display: block;
-    padding: 10px 10px 40px;
+    padding: 10px 10px 15px;
     width: 210px;
     word-wrap: break-word;
     word-break: break-all;
@@ -186,21 +186,26 @@ body {
 
 .footer {
     position: relative;
-    bottom: 35px;
-    margin-left: 10px;
-    cursor: pointer;
-    width: 30px;
+    width: 240px;
     height: 30px;
-    border-radius: 50px;
 }
 
 .footer .icon {
-    position: absolute;
-    left: 2px;
-    top: 6px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
 }
 
-.footer:hover {
+.footer .icon svg {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+.footer .icon:hover {
     background-color: rgb(238, 234, 234);
 }
 
@@ -215,12 +220,27 @@ body {
     left: 10px;
 }
 
+
 .dialog .color {
     content: "";
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     border-radius: 50px;
-    position: absolute;
+    position: relative;
+    display: inline-block;
     left: 5px;
     top: 10px;
+    cursor: pointer;
+}
+
+.dialog .color:hover {
+    border: 3px solid black;
+}
+
+.presetColor {
+    border: 1px solid black;
+}
+
+.colorSelected {
+    border: 3px solid black;
 }
