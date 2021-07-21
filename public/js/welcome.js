@@ -1,5 +1,7 @@
 let editor;
 $(document).ready(function () {
+    $('.myTooltip').tooltip();
+
     InlineEditor
         .create(document.querySelector('#addNote'))
         .then(newEditor => {

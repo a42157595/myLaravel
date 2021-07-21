@@ -133,11 +133,11 @@ body {
     background-color: #feefc3;
 }
 
-.optionIcon {
+.option .icon {
     padding: 15px 50px;
 }
 
-.optionIcon span {
+.option .icon span {
     margin-left: 20px;
 }
 
@@ -174,7 +174,7 @@ body {
     top: 10px;
 }
 
-.pushpinIcon {
+.pushpin .icon {
     position: absolute;
     left: 2px;
     top: 6px;
@@ -182,4 +182,45 @@ body {
 
 .pushpin:hover {
     background-color: rgb(238, 234, 234);
+}
+
+.footer {
+    position: relative;
+    bottom: 35px;
+    margin-left: 10px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+}
+
+.footer .icon {
+    position: absolute;
+    left: 2px;
+    top: 6px;
+}
+
+.footer:hover {
+    background-color: rgb(238, 234, 234);
+}
+
+.dialog {
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #888888;
+    width: 160px;
+    height: 120px;
+    position: absolute;
+    top: 25px;
+    left: 10px;
+}
+
+.dialog .color {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    position: absolute;
+    left: 5px;
+    top: 10px;
 }
