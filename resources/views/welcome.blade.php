@@ -85,7 +85,7 @@
         <div class="note">
             <div id="fixedArea">
                 <h3>固定記事</h3>
-                <div class="card" id="fd_1">
+                {{-- <div class="card" id="${item.DivID}">
                     <div class="pushpin myTooltip" data-toggle="tooltip" data-placement="bottom" title="固定記事">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path fill="none" d="M0 0h24v24H0z" />
@@ -93,7 +93,7 @@
                         </svg>
                     </div>
                     <div class="cardContent">
-                        你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好
+                        ${item.content}
                     </div>
 
                     <div class="footer">
@@ -102,8 +102,8 @@
                             <div class="color myTooltip" style="background-color: #f28b82;" data-color="#f28b82" data-toggle="tooltip" data-placement="bottom" title="紅色"></div>
                             <div class="color myTooltip" style="background-color: #fbbc04;" data-color="#fbbc04" data-toggle="tooltip" data-placement="bottom" title="橘色"></div>
                             <div class="color myTooltip" style="background-color: #fff475;" data-color="#fff475" data-toggle="tooltip" data-placement="bottom" title="黃色"></div>
-                            <div class="color myTooltip" style="background-color: #ccff90;" data-color="#ccff90" data-toggle="tooltip" data-placement="bottom" title="綠色"></div>
                             <div class="color myTooltip" style="background-color: #a7ffeb;" data-color="#a7ffeb" data-toggle="tooltip" data-placement="bottom" title="藍綠色"></div>
+                            <div class="color myTooltip" style="background-color: #ccff90;" data-color="#ccff90" data-toggle="tooltip" data-placement="bottom" title="綠色"></div>
                             <div class="color myTooltip" style="background-color: #cbf0f8;" data-color="#cbf0f8" data-toggle="tooltip" data-placement="bottom" title="藍色"></div>
                             <div class="color myTooltip" style="background-color: #aecbfa;" data-color="#aecbfa" data-toggle="tooltip" data-placement="bottom" title="深藍色"></div>
                             <div class="color myTooltip" style="background-color: #d7aefb;" data-color="#d7aefb" data-toggle="tooltip" data-placement="bottom" title="紫色"></div>
@@ -112,7 +112,7 @@
                             <div class="color myTooltip" style="background-color: #e8eaed;" data-color="#e8eaed" data-toggle="tooltip" data-placement="bottom" title="灰色"></div>
                         </div>
                         <div class="icon">
-                            <div class="changeColor myTooltip" data-did='fd_1' data-toggle="tooltip" data-placement="bottom" title="變更顏色">
+                            <div class="changeColor myTooltip" data-did='${item.DivID}' data-toggle="tooltip" data-placement="bottom" title="變更顏色">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000">
                                     <path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0 1 12 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5a.54.54 0 0 0-.14-.35c-.41-.46-.63-1.05-.63-1.65a2.5 2.5 0 0 1 2.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z" />
                                     <circle cx="6.5" cy="11.5" r="1.5" />
@@ -124,7 +124,7 @@
                         </div>
 
                         <div class="icon">
-                            <div class="myTooltip" data-id='fd_1' data-toggle="tooltip" data-placement="bottom" title="刪除記事">
+                            <div class="myTooltip" data-id='${item.DivID}' data-toggle="tooltip" data-placement="bottom" title="刪除記事">
                                 <svg width="24" height="24" viewBox="-47 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m416.875 114.441406-11.304688-33.886718c-4.304687-12.90625-16.339843-21.578126-29.941406-21.578126h-95.011718v-30.933593c0-15.460938-12.570313-28.042969-28.027344-28.042969h-87.007813c-15.453125 0-28.027343 12.582031-28.027343 28.042969v30.933593h-95.007813c-13.605469 0-25.640625 8.671876-29.945313 21.578126l-11.304687 33.886718c-2.574219 7.714844-1.2695312 16.257813 3.484375 22.855469 4.753906 6.597656 12.445312 10.539063 20.578125 10.539063h11.816406l26.007813 321.605468c1.933594 23.863282 22.183594 42.558594 46.109375 42.558594h204.863281c23.921875 0 44.175781-18.695312 46.105469-42.5625l26.007812-321.601562h6.542969c8.132812 0 15.824219-3.941407 20.578125-10.535157 4.753906-6.597656 6.058594-15.144531 3.484375-22.859375zm-249.320312-84.441406h83.0625v28.976562h-83.0625zm162.804687 437.019531c-.679687 8.402344-7.796875 14.980469-16.203125 14.980469h-204.863281c-8.40625 0-15.523438-6.578125-16.203125-14.980469l-25.816406-319.183593h288.898437zm-298.566406-349.183593 9.269531-27.789063c.210938-.640625.808594-1.070313 1.484375-1.070313h333.082031c.675782 0 1.269532.429688 1.484375 1.070313l9.269531 27.789063zm0 0" />
                                     <path d="m282.515625 465.957031c.265625.015625.527344.019531.792969.019531 7.925781 0 14.550781-6.210937 14.964844-14.21875l14.085937-270.398437c.429687-8.273437-5.929687-15.332031-14.199219-15.761719-8.292968-.441406-15.328125 5.925782-15.761718 14.199219l-14.082032 270.398437c-.429687 8.273438 5.925782 15.332032 14.199219 15.761719zm0 0" />
@@ -134,12 +134,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
-            <div id="otherNotes">
+            {{-- <div id="otherArea" v-for="(item, index) in list">
                 <h3>其他記事</h3>
-                <div class="card" id="d_1">
+                <div class="card" id="${item.DivID}">
                     <div class="pushpin myTooltip" data-toggle="tooltip" data-placement="bottom" title="固定記事">
                         <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path fill="none" d="M0 0h24v24H0z" />
@@ -147,7 +147,7 @@
                         </svg>
                     </div>
                     <div class="cardContent">
-                        你好你好你好你好你好
+                        %%%item.content%%%
                     </div>
 
                     <div class="footer">
@@ -166,7 +166,7 @@
                             <div class="color myTooltip" style="background-color: #e8eaed;" data-color="#e8eaed" data-toggle="tooltip" data-placement="bottom" title="灰色"></div>
                         </div>
                         <div class="icon">
-                            <div class="changeColor myTooltip" data-did='d_1' data-toggle="tooltip" data-placement="bottom" title="變更顏色">
+                            <div class="changeColor myTooltip" data-did='${item.DivID}' data-toggle="tooltip" data-placement="bottom" title="變更顏色">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#000">
                                     <path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0 1 12 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5a.54.54 0 0 0-.14-.35c-.41-.46-.63-1.05-.63-1.65a2.5 2.5 0 0 1 2.5-2.5H16c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z" />
                                     <circle cx="6.5" cy="11.5" r="1.5" />
@@ -178,7 +178,7 @@
                         </div>
 
                         <div class="icon">
-                            <div class="myTooltip" data-id='d_1' data-toggle="tooltip" data-placement="bottom" title="刪除記事">
+                            <div class="myTooltip" data-id='${item.DivID}' data-toggle="tooltip" data-placement="bottom" title="刪除記事">
                                 <svg width="24" height="24" viewBox="-47 0 512 512" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m416.875 114.441406-11.304688-33.886718c-4.304687-12.90625-16.339843-21.578126-29.941406-21.578126h-95.011718v-30.933593c0-15.460938-12.570313-28.042969-28.027344-28.042969h-87.007813c-15.453125 0-28.027343 12.582031-28.027343 28.042969v30.933593h-95.007813c-13.605469 0-25.640625 8.671876-29.945313 21.578126l-11.304687 33.886718c-2.574219 7.714844-1.2695312 16.257813 3.484375 22.855469 4.753906 6.597656 12.445312 10.539063 20.578125 10.539063h11.816406l26.007813 321.605468c1.933594 23.863282 22.183594 42.558594 46.109375 42.558594h204.863281c23.921875 0 44.175781-18.695312 46.105469-42.5625l26.007812-321.601562h6.542969c8.132812 0 15.824219-3.941407 20.578125-10.535157 4.753906-6.597656 6.058594-15.144531 3.484375-22.859375zm-249.320312-84.441406h83.0625v28.976562h-83.0625zm162.804687 437.019531c-.679687 8.402344-7.796875 14.980469-16.203125 14.980469h-204.863281c-8.40625 0-15.523438-6.578125-16.203125-14.980469l-25.816406-319.183593h288.898437zm-298.566406-349.183593 9.269531-27.789063c.210938-.640625.808594-1.070313 1.484375-1.070313h333.082031c.675782 0 1.269532.429688 1.484375 1.070313l9.269531 27.789063zm0 0" />
                                     <path d="m282.515625 465.957031c.265625.015625.527344.019531.792969.019531 7.925781 0 14.550781-6.210937 14.964844-14.21875l14.085937-270.398437c.429687-8.273437-5.929687-15.332031-14.199219-15.761719-8.292968-.441406-15.328125 5.925782-15.761718 14.199219l-14.082032 270.398437c-.429687 8.273438 5.925782 15.332032 14.199219 15.761719zm0 0" />
@@ -189,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
@@ -199,6 +199,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.hoverintent/1.10.1/jquery.hoverIntent.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/inline/ckeditor.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 <script src="js/welcome.js"></script>
 
 </html>

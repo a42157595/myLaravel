@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use App\Models\User;
 
 class NoteController extends Controller
 {
@@ -18,9 +17,9 @@ class NoteController extends Controller
 
     public function index()
     {
-        // echo "a";
-        $notes = new Note;
-        echo json_encode(User::find(1)->notes);
+        $fixed = Note::where("user_id", Auth::id())->where('fixed', 1)->orderBy("updated_at")->get();
+        $other = Note::where("user_id", Auth::id())->where('fixed', 0)->orderBy("updated_at")->get();
+        echo json_encode(array('fixed' => $fixed, 'other' => $other));
     }
     /**
      * Show the form for creating a new resource.

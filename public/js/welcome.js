@@ -1,5 +1,8 @@
 var editor;
 var id;
+var fixedNote, otherNote;
+var fixedVueData = [],
+    otherVueData = [];
 $(document).ready(function () {
     $('.myTooltip').tooltip();
 
@@ -18,8 +21,25 @@ $(document).ready(function () {
         dataType: "json",
         async: false,
         success: function (r) {
-            console.log(r);
+            fixedVueData = r.fixed;
+            otherVueData = r.other;
         }
+    });
+
+    fixedNote = new Vue({
+        el: '#fixedArea',
+        delimiters: ['%%%', '%%%'],
+        data: {
+            list: fixedVueData,
+        },
+    });
+
+    otherNote = new Vue({
+        el: '#otherArea',
+        delimiters: ['%%%', '%%%'],
+        data: {
+            list: otherVueData,
+        },
     });
 
     $(".searchInput").focus(function (e) {
