@@ -24,6 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::prefix('notes')->group(function () {
+Route::prefix('note')->group(function () {
     Route::post('store', [NoteController::class, 'store']);
+    Route::get('index', [NoteController::class, 'index']);
 });

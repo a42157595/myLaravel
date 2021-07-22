@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Notes;
+use App\Models\Note;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class NoteController extends Controller
 {
@@ -14,9 +15,12 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+        // echo "a";
+        $notes = new Note;
+        echo json_encode(User::find(1)->notes);
     }
     /**
      * Show the form for creating a new resource.
@@ -51,7 +55,7 @@ class NoteController extends Controller
             return;
         }
 
-        $note = new Notes;
+        $note = new Note;
         $note->content = $request['content'];
         $note->user_id = Auth::id();
         if ($note->save())

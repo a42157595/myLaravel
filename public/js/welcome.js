@@ -12,6 +12,16 @@ $(document).ready(function () {
             console.error(error);
         });
 
+    $.ajax({
+        type: "get",
+        url: "note/index",
+        dataType: "json",
+        async: false,
+        success: function (r) {
+            console.log(r);
+        }
+    });
+
     $(".searchInput").focus(function (e) {
         e.preventDefault();
         $("#search").addClass("searchSelected");
@@ -38,7 +48,7 @@ $(document).ready(function () {
     $("#addNoteBtn").click(function (e) {
         $.ajax({
             type: "post",
-            url: "notes/store",
+            url: "note/store",
             data: {
                 content: editor.getData()
             },
@@ -76,6 +86,10 @@ $(document).ready(function () {
     }, function () {
 
     });
+
+    $(".color").click(function (e) {
+        $(this).closest(".card").css("background-color", $(this).data("color"));
+    })
 });
 
 function dialogOver() {

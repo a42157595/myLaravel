@@ -153,6 +153,7 @@ body {
     position: relative;
     width: 240px;
     min-height: 70px;
+    margin: 25px;
 }
 
 .cardContent {
@@ -216,7 +217,7 @@ body {
     width: 160px;
     height: 120px;
     position: absolute;
-    top: 25px;
+    bottom: 20px;
     left: 10px;
 }
 
@@ -243,4 +244,13 @@ body {
 
 .colorSelected {
     border: 3px solid black;
+}
+
+.fixedArea {
+    width: 240px;
+
+}
+
+h3 {
+    font-weight: bold;
 }
