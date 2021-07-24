@@ -17,8 +17,8 @@ class NoteController extends Controller
 
     public function index()
     {
-        $fixed = Note::where("user_id", Auth::id())->where('fixed', 1)->orderBy("updated_at")->get();
-        $other = Note::where("user_id", Auth::id())->where('fixed', 0)->orderBy("updated_at")->get();
+        $fixed = Note::select("id", "content", "fixed AS type", "bgcolor")->where("user_id", Auth::id())->where('fixed', 1)->orderBy("updated_at", "desc")->get();
+        $other = Note::select("id", "content", "fixed AS type", "bgcolor")->where("user_id", Auth::id())->where('fixed', 0)->orderBy("updated_at", "desc")->get();
         echo json_encode(array('fixed' => $fixed, 'other' => $other));
     }
     /**
@@ -57,9 +57,10 @@ class NoteController extends Controller
         $note = new Note;
         $note->content = $request['content'];
         $note->user_id = Auth::id();
-        if ($note->save())
-            echo json_encode(array('status' => true, 'msg' => '新增成功'));
-        else
+        if ($note->save()) {
+            $id = Note::select("id")->where("user_id", $note->user_id)->orderBy("updated_at", "desc")->first();
+            echo json_encode(array('status' => true, "id" => $id, "content" => $note->content));
+        } else
             echo json_encode(array('status' => false, 'msg' => '新增失敗'));
     }
 
@@ -92,9 +93,13 @@ class NoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateFixed($id = '', $type = 1)
     {
-        //
+        $type = !$type;
+        if (Note::where("user_id", Auth::id())->where("id", $id)->update(['fixed' => $type]))
+            echo json_encode(array('status' => true));
+        else
+            echo json_encode(array('status' => false));
     }
 
     /**
@@ -105,6 +110,9 @@ class NoteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Note::where("user_id", Auth::id())->where("id", $id)->delete())
+            echo json_encode(array('status' => true, 'msg' => '刪除成功'));
+        else
+            echo json_encode(array('status' => false, 'msg' => '刪除失敗'));
     }
 }

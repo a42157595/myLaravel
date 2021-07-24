@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddBgcolorToNotes extends Migration
+class ChangeNoteDefaultToNotes extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddBgcolorToNotes extends Migration
     public function up()
     {
         Schema::table('notes', function (Blueprint $table) {
-            $table->char('fixed')->default(0);
+            $table->string('bgcolor', 20)->default('#fff');
         });
     }
 
@@ -25,7 +25,7 @@ class AddBgcolorToNotes extends Migration
      */
     public function down()
     {
-        Schema::table('notes', function (Blueprint $table) {
+        Schema::table('note', function (Blueprint $table) {
             //
         });
     }

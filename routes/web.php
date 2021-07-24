@@ -27,4 +27,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::prefix('note')->group(function () {
     Route::post('store', [NoteController::class, 'store']);
     Route::get('index', [NoteController::class, 'index']);
+    Route::delete('delete/{id}', [NoteController::class, 'destroy']);
+    Route::put('updateFixed/{id}/{type}', [NoteController::class, 'updateFixed']);
 });

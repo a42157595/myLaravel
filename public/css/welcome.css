@@ -151,6 +151,7 @@ body {
 
 .note .card {
     position: relative;
+    display: inline-block;
     width: 240px;
     min-height: 70px;
     margin: 25px;
