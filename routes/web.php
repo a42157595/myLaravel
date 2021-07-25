@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GarbageCanController;
 use App\Http\Controllers\Note;
 use App\Http\Controllers\NoteController;
 use App\Models\Notes;
@@ -29,4 +30,12 @@ Route::prefix('note')->group(function () {
     Route::get('index', [NoteController::class, 'index']);
     Route::delete('delete/{id}', [NoteController::class, 'destroy']);
     Route::put('updateFixed/{id}/{type}', [NoteController::class, 'updateFixed']);
+    Route::put('changeBgColor/{id}', [NoteController::class, 'changeBgColor']);
+});
+
+Route::prefix('garbageCan')->group(function () {
+    Route::get('/', function () {
+        return view('garbageCan');
+    });
+    Route::get('index', [GarbageCanController::class, 'index']);
 });

@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.20/sweetalert2.min.css" rel="stylesheet">
 
-    <link href="css/welcome.css" rel="stylesheet">
+    <link href="css/garbageCan.css" rel="stylesheet">
 </head>
 
 <body>
@@ -53,7 +53,7 @@
 
     <div class="main">
         <div class="optionalArea">
-            <div class="option optionSelected">
+            <div class="option" data-url="">
                 <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"></path>
@@ -69,7 +69,7 @@
                     <span> 編輯標籤 </span>
                 </div>
             </div>
-            <div class="option" data-url="garbageCan">
+            <div class="option optionSelected" data-url="garbageCan">
                 <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M15 4V3H9v1H4v2h1v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V6h1V4h-5zm2 15H7V6h10v13z"></path>
@@ -79,19 +79,9 @@
                 </div>
             </div>
         </div>
-        <div class="addNote">
-            <div id="addNote">新增事記...</div>
-            <button class="btn" id="addNoteBtn">新增</button>
-        </div>
 
         <div class="note">
-            <div id="fixedArea">
-                <h3 id="fixedTitle">固定記事</h3>
-                <note-template v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></note-template>
-            </div>
-
-            <div id="otherArea">
-                <h3>其他記事</h3>
+            <div id="noteArea">
                 <note-template v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></note-template>
             </div>
         </div>
@@ -104,6 +94,6 @@
 <script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/inline/ckeditor.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.0.20/sweetalert2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-<script src="js/welcome.js"></script>
+<script src="js/garbageCan.js"></script>
 
 </html>

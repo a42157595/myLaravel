@@ -61,7 +61,11 @@ class NoteController extends Controller
             echo json_encode(array('status' => false, 'msg' => '刪除失敗'));
     }
 
-    public function changeBgColor($id = 0, $color = "#fff")
+    public function changeBgColor(Request $request, $id = 0)
     {
+        if (Note::where("user_id", Auth::id())->where("id", $id)->update(['bgcolor' => $request['color']]))
+            echo json_encode(array('status' => true));
+        else
+            echo json_encode(array('status' => false));
     }
 }
