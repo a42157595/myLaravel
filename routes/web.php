@@ -38,4 +38,5 @@ Route::prefix('garbageCan')->group(function () {
         return view('garbageCan');
     });
     Route::get('index', [GarbageCanController::class, 'index']);
+    Route::put('recovery/{id}', [GarbageCanController::class, 'recovery']);
 });
