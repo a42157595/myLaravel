@@ -116,13 +116,12 @@ $(document).ready(function () {
             dataType: "json",
             success: function (r) {
                 if (r['status']) {
-                    otherNote.posts.push({
+                    otherNote.posts.unshift({
                         fixed: '0',
                         id: r['id'],
                         content: r['content'],
                         bgcolor: 'rgb(255, 255, 255)'
                     });
-                    console.log(otherNote.posts);
                 }
 
                 Swal.fire({
@@ -228,7 +227,7 @@ function noteRead() {
                             return item.id == id;
                         });
                         fixedVueData.splice(data.index, 1);
-                        otherVueData.push({
+                        otherVueData.unshift({
                             type: '1',
                             id: data.id,
                             content: data.content,
@@ -240,7 +239,7 @@ function noteRead() {
                             return item.id == id;
                         });
                         otherVueData.splice(data.index, 1);
-                        fixedVueData.push({
+                        fixedVueData.unshift({
                             type: '1',
                             id: data.id,
                             content: data.content,
