@@ -72,12 +72,17 @@ class NoteController extends Controller
 
     public function addLabel(Request $request)
     {
-        $label = new Note;
+        $label = new Label;
         $label->user_id = Auth::id();
         $label->content = $request['content'];
         if ($label->save())
             echo json_encode(array('status' => true, 'msg' => '新增成功'));
         else
             echo json_encode(array('status' => false, 'msg' => '新增失敗'));
+    }
+
+    public function getLabel()
+    {
+        echo json_encode(Label::select("content")->where("user_id", Auth::id())->get());
     }
 }

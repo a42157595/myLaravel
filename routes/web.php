@@ -32,6 +32,7 @@ Route::prefix('note')->group(function () {
     Route::put('updateFixed/{id}/{type}', [NoteController::class, 'updateFixed']);
     Route::put('changeBgColor/{id}', [NoteController::class, 'changeBgColor']);
 
+    Route::get('getLabel', [NoteController::class, 'getLabel']);
     Route::post('addLabel', [NoteController::class, 'addLabel']);
 });
 

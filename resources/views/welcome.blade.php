@@ -75,10 +75,8 @@
                     <span> 編輯標籤 </span>
                 </div>
             </div>
-            <div class="option labelOption" data-url="null">
-                <div class="icon">
-                    <span> asdasdasd </span>
-                </div>
+            <div id="labelOption">
+                <label-option-template v-for="post in posts" v-bind:post="post"></label-option-template>
             </div>
             <div class="option" data-url="garbageCan">
                 <div class="icon">
@@ -98,12 +96,12 @@
         <div class="note">
             <div id="fixedArea">
                 <h3 id="fixedTitle">固定記事</h3>
-                <note-template v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></note-template>
+                <note-template v-for="post in posts" v-bind:post="post"></note-template>
             </div>
 
             <div id="otherArea">
                 <h3>其他記事</h3>
-                <note-template v-for="post in posts" v-bind:key="post.id" v-bind:post="post"></note-template>
+                <note-template v-for="post in posts" v-bind:post="post"></note-template>
             </div>
         </div>
     </div>

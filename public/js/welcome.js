@@ -1,8 +1,9 @@
 var editor;
 var id;
-var fixedNote, otherNote;
+var fixedNote, otherNote, labelOption;
 var fixedVueData,
-    otherVueData, searchVueData = [];
+    otherVueData, searchVueData = [],
+    labelOptionData;
 var noteTemplate;
 $(document).ready(function () {
     $('.myTooltip').tooltip();
@@ -154,9 +155,6 @@ $(document).ready(function () {
         },
         updated: function () {
             noteRead();
-        },
-        created: function () {
-            noteRead();
         }
     });
 
@@ -167,9 +165,6 @@ $(document).ready(function () {
             type: "other"
         },
         updated: function () {
-            noteRead();
-        },
-        created: function () {
             noteRead();
         }
     });
@@ -203,13 +198,25 @@ $(document).ready(function () {
         $(".searchInput").val("");
     })
 
+    Vue.component('label-option-template', {
+        props: ['post'],
+        template: `
+        <div class="option labelOption" data-url="option">
+            <div class="icon">
+                <span>{{post.content}}</span>
+            </div>
+        </div>
+        `
+    })
+
     $(".option").click(function (e) {
         url = $(this).data('url');
-        console.log(url);
         if (url != null) {
             window.location.replace(`http://127.0.0.1:8000/${url}`);
             return;
         }
+        if (url == "option")
+            return;
         Swal.fire({
             title: '新增標籤',
             input: 'text',
@@ -229,7 +236,9 @@ $(document).ready(function () {
                     dataType: "json",
                     success: function (r) {
                         if (r['status']) {
-
+                            labelOption.posts.push({
+                                content: login
+                            });
                             Swal.fire({
                                 icon: 'success',
                                 title: r['msg'],
@@ -250,22 +259,42 @@ $(document).ready(function () {
         })
     });
 
-    Vue.component('labelOption-template', {
-        props: ['post'],
-        template: `
-        
-        `
-    })
+    $.ajax({
+        type: "get",
+        url: "note/getLabel",
+        dataType: "json",
+        async: false,
+        success: function (r) {
+            labelOptionData = r;
+        }
+    });
 
+    labelOption = new Vue({
+        el: '#labelOption',
+        data: {
+            posts: labelOptionData,
+        },
+        updated: function () {
+            labelOptionRead();
+        }
+    });
+
+    labelOptionRead();
     noteRead();
 });
 
-function dialogOver() {
-
-}
+function dialogOver() {}
 
 function dialogOut() {
     $(`#${id} div[class='dialog']`).css('display', 'none');
+}
+
+function labelOptionRead() {
+    $(".labelOption").unbind();
+    $(".labelOption").click(function (e) {
+        label = $(this).find("span").html();
+        window.location.replace(`http://127.0.0.1:8000?label=${label}`);
+    })
 }
 
 function noteRead() {
@@ -411,7 +440,32 @@ function noteRead() {
         })
     })
 
+
+    $(".classification").unbind();
     $(".classification").click(function (e) {
         id = $(this).closest(".card").attr('id');
+        options = [];
+        labelOptionData.forEach(e => {
+            options.push(e.content);
+        });
+        Swal.fire({
+            title: '選擇標籤',
+            input: 'select',
+            inputOptions: {
+                options
+            },
+            inputPlaceholder: '標籤',
+            showCancelButton: true,
+            inputValidator: (value) => {
+                $.ajax({
+                    type: "put",
+                    url: `label/updateNoteLabel/${options[value]}`,
+                    dataType: "json",
+                    success: function (r) {
+
+                    }
+                });
+            }
+        })
     })
 }
