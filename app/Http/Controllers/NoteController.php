@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Note;
+use App\Models\Label;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -67,5 +68,16 @@ class NoteController extends Controller
             echo json_encode(array('status' => true));
         else
             echo json_encode(array('status' => false));
+    }
+
+    public function addLabel(Request $request)
+    {
+        $label = new Note;
+        $label->user_id = Auth::id();
+        $label->content = $request['content'];
+        if ($label->save())
+            echo json_encode(array('status' => true, 'msg' => '新增成功'));
+        else
+            echo json_encode(array('status' => false, 'msg' => '新增失敗'));
     }
 }

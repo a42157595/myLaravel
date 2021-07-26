@@ -19,16 +19,22 @@
     <div class="nav">
         <div class="input-group mb-3" id="search">
             <form class="searchForm" method="get" role="search">
-                <div class="chearchClearBtn">
-                    <input class="searchInput" aria-label="搜尋" autocomplete="off" placeholder="搜尋" role="combobox" value="" name="q" type="text" aria-hidden="false">
+                <div class="cearchClearBtn">
+                    <input class="searchInput" aria-label="搜尋" placeholder="搜尋" type="text">
                 </div>
-                <button class="chearchBtn" aria-label="搜尋" role="button" aria-hidden="false">
+                <button class="cearchBtn" aria-label="搜尋" role="button" aria-hidden="false">
                     <svg focusable="false" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.49,19l-5.73-5.73C15.53,12.2,16,10.91,16,9.5C16,5.91,13.09,3,9.5,3S3,5.91,3,9.5C3,13.09,5.91,16,9.5,16 c1.41,0,2.7-0.47,3.77-1.24L19,20.49L20.49,19z M5,9.5C5,7.01,7.01,5,9.5,5S14,7.01,14,9.5S11.99,14,9.5,14S5,11.99,5,9.5z"></path>
                         <path d="M0,0h24v24H0V0z" fill="none"></path>
                     </svg>
                 </button>
             </form>
+            <button class="cearchCloseBtn" aria-label="清除" role="button" aria-hidden="false">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <path d="M0 0h24v24H0V0z" fill="none" />
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+                </svg>
+            </button>
         </div>
 
 
@@ -53,7 +59,7 @@
 
     <div class="main">
         <div class="optionalArea">
-            <div class="option optionSelected">
+            <div class="option optionSelected" data-url="">
                 <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                         <path d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7zm2.85 11.1l-.85.6V16h-4v-2.3l-.85-.6A4.997 4.997 0 0 1 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.63-.8 3.16-2.15 4.1z"></path>
@@ -67,6 +73,11 @@
                         <path d="M20.41 4.94l-1.35-1.35c-.78-.78-2.05-.78-2.83 0L13.4 6.41 3 16.82V21h4.18l10.46-10.46 2.77-2.77c.79-.78.79-2.05 0-2.83zm-14 14.12L5 19v-1.36l9.82-9.82 1.41 1.41-9.82 9.83z"></path>
                     </svg>
                     <span> 編輯標籤 </span>
+                </div>
+            </div>
+            <div class="option labelOption" data-url="null">
+                <div class="icon">
+                    <span> asdasdasd </span>
                 </div>
             </div>
             <div class="option" data-url="garbageCan">

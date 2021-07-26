@@ -47,17 +47,27 @@ body {
 
 }
 
-.chearchBtn {
+.cearchBtn,
+.cearchCloseBtn {
     position: absolute;
     height: 37px;
-    left: 0px;
     top: 0px;
     background-color: rgba(255, 255, 255, 0);
     border-radius: 50%;
     border: 0px solid white;
 }
 
-.chearchBtn:hover {
+.cearchBtn {
+    left: 0px;
+}
+
+.cearchCloseBtn {
+    right: 0px;
+    border-radius: 50% !important;
+}
+
+.cearchBtn:hover,
+.cearchCloseBtn:hover {
     background-color: rgb(190, 190, 190);
 }
 

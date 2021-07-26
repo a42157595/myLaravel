@@ -31,6 +31,8 @@ Route::prefix('note')->group(function () {
     Route::delete('delete/{id}', [NoteController::class, 'destroy']);
     Route::put('updateFixed/{id}/{type}', [NoteController::class, 'updateFixed']);
     Route::put('changeBgColor/{id}', [NoteController::class, 'changeBgColor']);
+
+    Route::post('addLabel', [NoteController::class, 'addLabel']);
 });
 
 Route::prefix('garbageCan')->group(function () {

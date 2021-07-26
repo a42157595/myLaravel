@@ -1,7 +1,7 @@
 var editor;
 var id;
 var Note;
-var noteVueData;
+var noteVueData, searchVueData = [];
 var noteTemplate;
 $(document).ready(function () {
     $('.myTooltip').tooltip();
@@ -69,6 +69,26 @@ $(document).ready(function () {
             noteRead();
         }
     });
+
+    $(".searchForm").submit(function (e) {
+        e.preventDefault();
+    });
+
+    $(".cearchBtn").click(function (e) {
+        search = $(".searchInput").val();
+        noteVueData.forEach(e => {
+            if (e.content.indexOf(search) > 0) {
+                searchVueData.push(e);
+            }
+        });
+        Note.posts = searchVueData;
+    })
+
+    $(".cearchCloseBtn").click(function (e) {
+        searchVueData = [];
+        Note.posts = noteVueData;
+        $(".searchInput").val("");
+    })
 
     noteRead();
 });

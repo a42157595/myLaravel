@@ -2,7 +2,7 @@ var editor;
 var id;
 var fixedNote, otherNote;
 var fixedVueData,
-    otherVueData;
+    otherVueData, searchVueData = [];
 var noteTemplate;
 $(document).ready(function () {
     $('.myTooltip').tooltip();
@@ -67,6 +67,15 @@ $(document).ready(function () {
                     </svg>
                 </div>
             </div>
+
+            <div class="icon">
+                <div class="classification myTooltip" data-toggle="tooltip" data-placement="bottom" title="刪除記事">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <path d="M0 0h24v24H0V0z" fill="none"/>
+                    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-8-2h2v-4h4v-2h-4V7h-2v4H7v2h4z"/>
+                </svg>
+                </div>
+            </div>
         </div>
     </div>
         `
@@ -95,12 +104,6 @@ $(document).ready(function () {
         $(this).removeClass("inputSelected");
     });
 
-    $(".option").click(function (e) {
-        url = $(this).data('url');
-        if (url != "null")
-            window.location.replace(`http://127.0.0.1:8000/${url}`);
-    });
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -123,14 +126,22 @@ $(document).ready(function () {
                         content: r['content'],
                         bgcolor: 'rgb(255, 255, 255)'
                     });
+                    Swal.fire({
+                        icon: 'success',
+                        title: r['msg'],
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: r['msg'],
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
                 }
 
-                Swal.fire({
-                    icon: 'success',
-                    title: r['msg'],
-                    showConfirmButton: false,
-                    timer: 1500
-                })
+
             }
         });
     });
@@ -163,13 +174,90 @@ $(document).ready(function () {
         }
     });
 
-    noteRead();
+    $(".searchForm").submit(function (e) {
+        e.preventDefault();
+    });
 
-    // otherNote.posts.push({
-    //     id: '3',
-    //     content: '3',
-    //     fixed: '0'
-    // });
+    $(".cearchBtn").click(function (e) {
+        search = $(".searchInput").val();
+        console.log(search);
+        fixedVueData.forEach(e => {
+            if (e.content.indexOf(search) > 0) {
+                searchVueData.push(e);
+            }
+        });
+        fixedNote.posts = searchVueData;
+        searchVueData = [];
+        otherVueData.forEach(e => {
+            if (e.content.indexOf(search) > 0) {
+                searchVueData.push(e);
+            }
+        });
+        otherNote.posts = searchVueData;
+    })
+
+    $(".cearchCloseBtn").click(function (e) {
+        searchVueData = [];
+        fixedNote.posts = fixedVueData;
+        otherNote.posts = otherVueData;
+        $(".searchInput").val("");
+    })
+
+    $(".option").click(function (e) {
+        url = $(this).data('url');
+        console.log(url);
+        if (url != null) {
+            window.location.replace(`http://127.0.0.1:8000/${url}`);
+            return;
+        }
+        Swal.fire({
+            title: '新增標籤',
+            input: 'text',
+            inputAttributes: {
+                autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: '新增',
+            showLoaderOnConfirm: true,
+            preConfirm: (login) => {
+                $.ajax({
+                    type: "post",
+                    url: "note/addLabel",
+                    data: {
+                        content: login
+                    },
+                    dataType: "json",
+                    success: function (r) {
+                        if (r['status']) {
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: r['msg'],
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: r['msg'],
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    }
+                });
+            }
+        })
+    });
+
+    Vue.component('labelOption-template', {
+        props: ['post'],
+        template: `
+        
+        `
+    })
+
+    noteRead();
 });
 
 function dialogOver() {
@@ -239,7 +327,6 @@ function noteRead() {
     $(".pushpin").click(function () {
         type = $(this).data("type");
         id = $(this).closest(".card").attr('id');
-        console.log(type, id);
         $.ajax({
             type: "post",
             url: `note/updateFixed/${id}/${type}`,
@@ -322,5 +409,9 @@ function noteRead() {
                 });
             }
         })
+    })
+
+    $(".classification").click(function (e) {
+        id = $(this).closest(".card").attr('id');
     })
 }
