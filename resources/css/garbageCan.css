@@ -1,0 +1,175 @@
+html,
+body {
+
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.nav {
+    border-bottom: 1px solid #aaa;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    padding-top: 15px;
+}
+
+.input-group {
+    background-color: rgb(215, 215, 215);
+    z-index: 50;
+    position: relative;
+    left: 40%;
+    width: 340px !important;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.searchSelected {
+    background-color: white !important;
+    box-shadow: 0px 0px 10px rgb(121, 121, 121) !important;
+}
+
+.inputSelected {
+    background-color: rgba(255, 255, 255, 0) !important;
+    outline: none;
+}
+
+.searchInput {
+    position: absolute;
+    width: 300px !important;
+    height: 35px;
+    left: 40px;
+    font-size: 20px;
+    border: 0px solid white;
+    border-radius: 5px;
+    background-color: rgb(215, 215, 215);
+
+}
+
+.cearchBtn,
+.cearchCloseBtn {
+    position: absolute;
+    height: 37px;
+    top: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    border: 0px solid white;
+}
+
+.cearchBtn {
+    left: 0px;
+}
+
+.cearchCloseBtn {
+    right: 0px;
+    border-radius: 50% !important;
+}
+
+.cearchBtn:hover,
+.cearchCloseBtn:hover {
+    background-color: rgb(190, 190, 190);
+}
+
+.antialiased {
+    position: absolute;
+    right: 30px;
+    padding: 10px 0;
+}
+
+.antialiased a {
+    text-decoration: none;
+    color: #aaa;
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+.antialiased a:hover {
+    color: rgb(15, 15, 15)
+}
+
+.main {
+    display: flex;
+    height: calc(100% - 70px);
+}
+
+.optionalArea {
+    width: 20%;
+    height: 100%;
+    position: relative;
+}
+
+.option {
+    cursor: pointer;
+    position: relative;
+    width: 250px;
+    height: 50px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.option:hover {
+    background-color: rgb(238, 234, 234);
+}
+
+.optionSelected {
+    background-color: #feefc3;
+}
+
+.option .icon {
+    padding: 15px 50px;
+}
+
+.option .icon span {
+    margin-left: 20px;
+}
+
+.note {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 50px;
+    left: 50px;
+    /* border: 0px solid white; */
+}
+
+.note .card {
+    position: relative;
+    display: inline-block;
+    width: 240px;
+    min-height: 70px;
+    margin: 25px;
+}
+
+.cardContent {
+    display: block;
+    padding: 10px 10px 15px;
+    width: 210px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.recovery {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+}
+
+.recovery .icon {
+    position: absolute;
+    left: 2px;
+    top: 6px;
+}
+
+.recovery:hover {
+    background-color: rgb(238, 234, 234);
+}
+
+h3 {
+    font-weight: bold;
+}

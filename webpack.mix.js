@@ -16,6 +16,11 @@ mix.js('resources/js/app.js', 'public/js')
         require('postcss-import'),
         require('tailwindcss'),
     ]);
+mix.js('resources/js/welcome.js', 'public/js')
+    .css('resources/css/welcome.css', 'public/css');
+
+mix.js('resources/js/garbageCan.js', 'public/js')
+    .css('resources/css/garbageCan.css', 'public/css');
 
 if (mix.inProduction()) {
     mix.version();

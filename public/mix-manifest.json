@@ -1,4 +1,8 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/app.js": "/js/app.js?id=73e8cbe96e52795775f3",
+    "/js/welcome.js": "/js/welcome.js?id=fbde07ccd840450289b9",
+    "/js/garbageCan.js": "/js/garbageCan.js?id=3406c33bacda80c77057",
+    "/css/garbageCan.css": "/css/garbageCan.css?id=15cf54ed796e6c49942b",
+    "/css/welcome.css": "/css/welcome.css?id=73058bff369f34146a5d",
+    "/css/app.css": "/css/app.css?id=8d7ad1705d58a1a439d3"
 }
