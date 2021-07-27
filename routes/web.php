@@ -34,6 +34,7 @@ Route::prefix('note')->group(function () {
 
     Route::get('getLabel', [NoteController::class, 'getLabel']);
     Route::post('addLabel', [NoteController::class, 'addLabel']);
+    Route::put('updateNoteLabel/{id}/{label}', [NoteController::class, 'updateNoteLabel']);
 });
 
 Route::prefix('garbageCan')->group(function () {

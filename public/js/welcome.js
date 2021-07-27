@@ -82,10 +82,16 @@ $(document).ready(function () {
         `
     })
 
+    labelUrl = new URL(window.location.href);;
+    labelUrl = labelUrl.searchParams.get('label');
+
     $.ajax({
         type: "get",
         url: "note/index",
         dataType: "json",
+        data: {
+            label: labelUrl
+        },
         async: false,
         success: function (r) {
             fixedVueData = r.fixed;
@@ -201,7 +207,7 @@ $(document).ready(function () {
     Vue.component('label-option-template', {
         props: ['post'],
         template: `
-        <div class="option labelOption" data-url="option">
+        <div class="option labelOption" :data-content="post.content" data-url="option">
             <div class="icon">
                 <span>{{post.content}}</span>
             </div>
@@ -278,6 +284,12 @@ $(document).ready(function () {
             labelOptionRead();
         }
     });
+
+    if (labelUrl != null) {
+        console.log(labelUrl);
+        $(".optionSelected").removeClass("optionSelected");
+        $(`.labelOption[data-content='${labelUrl}']`).addClass('optionSelected')
+    }
 
     labelOptionRead();
     noteRead();
@@ -457,14 +469,35 @@ function noteRead() {
             inputPlaceholder: '標籤',
             showCancelButton: true,
             inputValidator: (value) => {
-                $.ajax({
-                    type: "put",
-                    url: `label/updateNoteLabel/${options[value]}`,
-                    dataType: "json",
-                    success: function (r) {
-
-                    }
-                });
+                if (value >= 0) {
+                    $.ajax({
+                        type: "put",
+                        url: `note/updateNoteLabel/${id}/${options[value]}`,
+                        data: {
+                            _method: "put"
+                        },
+                        dataType: "json",
+                        success: function (r) {
+                            if (r['status'])
+                                icon = 'success';
+                            else
+                                icon = 'warning';
+                            Swal.fire({
+                                icon: icon,
+                                title: r['msg'],
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: '請選擇',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
             }
         })
     })
